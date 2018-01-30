@@ -72013,8 +72013,18 @@ createDeprecatedModule('resolver');
     search: Ember.computed(function () {
       var _this = this;
 
-      return function () {
-        return _this.get('store').query(_this.get('modelName'), _this.get('queryArgs'));
+      return function (term) {
+        var _getProperties = _this.getProperties('modelName', 'params', 'queryKey', 'store'),
+            modelName = _getProperties.modelName,
+            params = _getProperties.params,
+            _getProperties$queryK = _getProperties.queryKey,
+            queryKey = _getProperties$queryK === undefined ? 'search' : _getProperties$queryK,
+            store = _getProperties.store;
+
+        var query = Object.assign({}, params);
+        query[queryKey] = term;
+
+        return store.query(modelName, query);
       };
     })
   });

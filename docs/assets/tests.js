@@ -216,17 +216,39 @@ define('dummy/tests/unit/components/data-power-select-test', ['ember-qunit'], fu
     }
   });
 
-  (0, _emberQunit.test)('it queries the store with modelName and queryArgs', function (assert) {
-    var args = {};
+  (0, _emberQunit.test)('it queries the store with modelName and "search" as default queryKey', function (assert) {
     this.s.setProperties({
-      modelName: 'model',
-      queryArgs: args
+      modelName: 'model'
     });
 
-    this.s.get('search')();
+    this.s.get('search')('term');
 
     assert.equal(this.queryArgs[0], 'model', 'first argument is "modelName"');
-    assert.equal(this.queryArgs[1], args, 'second argument is "queryArgs"');
+    assert.deepEqual(this.queryArgs[1], { search: 'term' });
+  });
+
+  (0, _emberQunit.test)('it queries the store with queryKey as query parameters', function (assert) {
+    this.s.setProperties({
+      queryKey: 'q'
+    });
+
+    this.s.get('search')('term');
+
+    assert.deepEqual(this.queryArgs[1], { q: 'term' });
+  });
+
+  (0, _emberQunit.test)('it queries with queryKey and params', function (assert) {
+    this.s.setProperties({
+      queryKey: 'q',
+      params: { orderBy: 'name' }
+    });
+
+    this.s.get('search')('term');
+
+    assert.deepEqual(this.queryArgs[1], {
+      q: 'term',
+      orderBy: 'name'
+    });
   });
 });
 require('dummy/tests/test-helper');
