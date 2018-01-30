@@ -1,26 +1,25 @@
 # ember-data-power-select
 
-This README outlines the details of collaborating on this Ember addon.
+Integrate into your Ember Data-compliant app without having to implement a `store.query` function in each route.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-data-power-select`
-* `npm install`
+```
+ember install ember-data-power-select
+```
 
-## Running
+## Usage
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+See [ember-power-select](http://ember-power-select.com/docs/how-to-use-it)'s API.
+Adds `modelName` and `queryArgs`.
 
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+```
+  {{#data-power-select
+    modelName='user'
+    queryArgs=(hash limit=10)
+    onchange=(action (mut selected))
+    as |user|
+  }}
+    {{user.name}}
+  {{/data-power-select}}
+```
