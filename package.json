@@ -1,6 +1,6 @@
 {
   "name": "ember-data-power-select",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "ember-power-select extended to user ember-data",
   "keywords": [
     "ember-addon",
