@@ -6,8 +6,14 @@ export default PowerSelect.extend({
   store: service(),
 
   search: computed(function(){
-    return () => this.get('store').query(
-      this.get('modelName'), this.get('queryArgs')
-    );
+    return term => {
+      const { modelName, params, queryKey = 'search', store } =
+        this.getProperties('modelName', 'params', 'queryKey', 'store')
+
+      const query = Object.assign({}, params)
+      query[queryKey] = term
+
+      return store.query(modelName, query)
+    };
   })
 });

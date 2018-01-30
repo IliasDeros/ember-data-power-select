@@ -1,29 +1,30 @@
-<h2 id="title">Ember Data Power Select</h2>
+<h2 id="title"><a href="https://github.com/IliasDeros/ember-data-power-select">Ember Data Power Select</a></h2>
 <p>Extends <a href="https://ember-power-select.com/" target=_blank>ember-power-select</a></p>
-<p>Integrate into Ember-Data. The search function will do a "store.query(modelName, queryArgs)" by default</p>
+<p>Integrate into Ember-Data. The search function will do a "store.query(modelName, query)" by default</p>
 
 <pre style="background: #f9f9f9">
   &#123;&#123;#data-power-select
     modelName='user'
-    queryArgs=(hash limit=10)
+    params=(hash limit=10)
+    queryKey='email'
+    params=(hash results=10)
+    onchange=(action (mut selected))
+    selected=selected
+    placeholder="Search Users emails..."
     as |user|
   &#125;&#125;
-    &#123;&#123;user.name&#125;&#125;
+    &#123;&#123;user.email&#125;&#125;
   &#123;&#123;/data-power-select&#125;&#125;
   <br>
 </pre>
 {{#data-power-select
-  allowClear=true
   modelName='user'
   onchange=(action (mut selected))
-  queryArgs=(hash results=10)
+  queryKey='email'
+  params=(hash results=10)
   selected=selected
-  placeholder="Search Users..."
+  placeholder="Search Users emails..."
   as |user|
 }}
-  <img src="{{user.picture.thumbnail}}">
-  <div style="display: inline-block">
-    <span>{{user.fullName}}</span><br/>
-    <span>{{user.email}}</span>
-  </div>
+  {{user.email}}
 {{/data-power-select}}
