@@ -1,6 +1,6 @@
 {
   "name": "ember-data-power-select",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "ember-power-select extended to user ember-data",
   "keywords": [
     "ember-addon",
@@ -8,12 +8,12 @@
     "select"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Ilias Deros (http://iliasderos.com)",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/IliasDeros/ember-data-power-select",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
