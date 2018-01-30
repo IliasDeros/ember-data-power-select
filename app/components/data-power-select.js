@@ -1,0 +1,1 @@
+export { default } from 'ember-data-power-select/components/data-power-select';
