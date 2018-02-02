@@ -15,5 +15,12 @@ export default PowerSelect.extend({
 
       return store.query(modelName, query)
     };
-  })
+  }),
+
+  actions: {
+    onTriggerFocus(){
+      this._super(...arguments)
+      this._performSearch('')
+    }
+  }
 });

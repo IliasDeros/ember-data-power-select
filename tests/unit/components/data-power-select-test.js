@@ -1,4 +1,5 @@
 import { moduleForComponent, test } from 'ember-qunit';
+import { run } from '@ember/runloop'
 
 moduleForComponent('data-power-select', 'Unit | Component | data power select', {
   unit: true,
@@ -26,6 +27,11 @@ test('it queries the store with modelName and "search" as default queryKey', fun
   assert.equal(this.queryArgs[0], 'model', 'first argument is "modelName"')
   assert.deepEqual(this.queryArgs[1], { search: 'term' })
 });
+
+test('it performs search on focus', function(assert){
+  run(() => this.s.send('onTriggerFocus'))
+  assert.deepEqual(this.queryArgs[1], { search: '' }, 'search an empty string on focus')
+})
 
 test('it queries the store with queryKey as query parameters', function(assert){
   this.s.setProperties({
