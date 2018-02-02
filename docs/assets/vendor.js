@@ -72026,7 +72026,14 @@ createDeprecatedModule('resolver');
 
         return store.query(modelName, query);
       };
-    })
+    }),
+
+    actions: {
+      onTriggerFocus: function onTriggerFocus() {
+        this._super.apply(this, arguments);
+        this._performSearch('');
+      }
+    }
   });
 });
 ;define('ember-inflector/index', ['exports', 'ember-inflector/lib/system', 'ember-inflector/lib/ext/string'], function (exports, _system) {

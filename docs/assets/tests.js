@@ -227,6 +227,15 @@ define('dummy/tests/unit/components/data-power-select-test', ['ember-qunit'], fu
     assert.deepEqual(this.queryArgs[1], { search: 'term' });
   });
 
+  (0, _emberQunit.test)('it performs search on focus', function (assert) {
+    var _this = this;
+
+    Ember.run(function () {
+      return _this.s.send('onTriggerFocus');
+    });
+    assert.deepEqual(this.queryArgs[1], { search: '' }, 'search an empty string on focus');
+  });
+
   (0, _emberQunit.test)('it queries the store with queryKey as query parameters', function (assert) {
     this.s.setProperties({
       queryKey: 'q'
