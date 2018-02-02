@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/ember-data-power-select.svg)](https://badge.fury.io/js/ember-data-power-select)
 # Ember Data Power Select
 
 Integrate into your Ember Data app without having to implement a `store.query` function in each route.
